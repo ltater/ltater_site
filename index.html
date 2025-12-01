@@ -507,10 +507,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            min-height: 60vh;
+            min-height: 80vh;
             position: relative;
             overflow: hidden;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1100px;
+            width: 100%;
+            align-items: center;
         }
 
         .contact-content {
@@ -518,39 +526,192 @@
             z-index: 1;
         }
 
-        .contact-content h2 {
-            font-size: clamp(2.2rem, 6vw, 4rem);
-            font-weight: 700;
+        .contact-content .subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 1rem;
+        }
+
+        .contact-content h2 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             line-height: 1.15;
         }
 
         .contact-content p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             opacity: 0.9;
-            margin-bottom: 2.5rem;
-            max-width: 420px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 400px;
+            line-height: 1.7;
         }
 
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1.1rem 2.2rem;
-            background: var(--text-bright);
-            color: var(--bg-dark);
+        .contact-info {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-info p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info a {
+            color: white;
             text-decoration: none;
-            font-size: 1rem;
             font-weight: 600;
-            border-radius: 100px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
-        .contact-email:hover {
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+            padding-right: 3rem;
+        }
+
+        .form-group select option {
+            background: var(--bg-dark);
+            color: var(--text-bright);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.1rem 2rem;
+            background: var(--text-bright);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 100px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .submit-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .submit-button:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Success Message */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success .icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .form-success h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-success p {
+            opacity: 0.8;
+            font-size: 1rem;
         }
 
         /* Footer */
@@ -589,6 +750,20 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .contact-content p {
+                margin: 0 auto;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
         }
 
         @media (max-width: 768px) {
@@ -618,6 +793,14 @@
 
             .stat-number {
                 font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
             }
 
             footer {
@@ -696,13 +879,13 @@
                 <div class="image-placeholder">Your Image Here</div>
             </div>
             <div class="about-content reveal">
-                <p class="subtitle">✦ Who We Are</p>
+                <p class="subtitle">✦ Who I Am</p>
                 <h2>Nice to meet you!</h2>
                 <p>
-                    The LTATER Collective is a purpose-driven consultancy that helps people and organizations cut through the chaos. We believe great work happens when you strip away the noise and laser-focus on what actually matters.
+                    The LTATER Collective is a suite of products and services built by Larissa Tater of Austin, Texas. With nearly a decade of Product Management expertise and more than 15 years of learning and building across the tech industry, Larissa is most energized by one thing: helping people manage chaos.
                 </p>
                 <p>
-                    We partner with ambitious teams to design systems that work—not just systems that exist. Less meetings. More momentum. Real results (and maybe a little fun along the way).
+                    Larissa is known as a "white space filler" because she takes on the biggest challenges, even when they fall outside of her job description. Companies bring her in when something important needs to get done &mdash; fast. She focuses on creating effiency at every level and leaving behind clear playbooks that make a lasting impact. 
                 </p>
                 <div class="fun-stats">
                     <div class="stat">
@@ -721,29 +904,30 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="projects-header reveal">
-            <p class="subtitle">✦ What We Do</p>
-            <h2>Our Work</h2>
+            <p class="subtitle">✦ What I Do</p>
+            <h2>My Work</h2>
         </div>
 
         <!-- Current Projects -->
         <div class="projects-category">
             <div class="category-title current reveal">
                 <h3>Working On Now</h3>
-                <span class="badge">2 Active</span>
+                <!-- <span class="badge">2 Active</span> -->
             </div>
             <div class="projects-grid">
                 <div class="project-card current reveal">
-                    <div class="icon">🚀</div>
+                    <!-- <div class="icon">🚀</div> -->
                     <p class="status">In Progress</p>
-                    <h4>Project Alpha</h4>
-                    <p>A comprehensive organizational redesign focused on sustainable productivity and team wellbeing. Breaking old patterns, building new momentum.</p>
+                    <h4>Roll Call Sports</h4>
+                    <p>Designed for those who manage recreational sports teams and groups. Get back your day with a personal assistant who can put out roll call and help you find substitutes without lifting a finger.</p>
+                    <p>Launching December 2025</p>
                 </div>
-                <div class="project-card current reveal">
+                <!-- <div class="project-card current reveal">
                     <div class="icon">✨</div>
                     <p class="status">In Progress</p>
                     <h4>Mindful Systems</h4>
                     <p>Developing frameworks for intentional workflow design in fast-paced creative environments. Less chaos, more clarity.</p>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -751,20 +935,20 @@
         <div class="projects-category">
             <div class="category-title upcoming reveal">
                 <h3>Coming Soon</h3>
-                <span class="badge">2 Upcoming</span>
+                <!-- <span class="badge">2 Upcoming</span> -->
             </div>
             <div class="projects-grid">
                 <div class="project-card upcoming reveal">
-                    <div class="icon">🎯</div>
-                    <p class="status">Starting Soon</p>
-                    <h4>Focus Workshop Series</h4>
-                    <p>Interactive workshops designed to help teams identify and eliminate productivity barriers. Hands-on and high-impact.</p>
-                </div>
-                <div class="project-card upcoming reveal">
-                    <div class="icon">🧹</div>
+                    <!-- <div class="icon">🎯</div> -->
                     <p class="status">Planning Phase</p>
+                    <h4>Sustainability through Natural Cycles</h4>
+                    <p>Designed for black thumb gardners who need an efficient and intuitive way to manage the growing seasons and the activities that surround them.</p>
+                </div>
+                <!-- <div class="project-card upcoming reveal">
+                    <div class="icon">🧹</div>
+                    <<p class="status">Planning Phase</p>
                     <h4>Digital Declutter</h4>
-                    <p>A comprehensive guide to simplifying digital workflows and reducing cognitive overhead. Clean slate energy!</p>
+                    <p>A comprehensive guide to simplifying digital workflows and reducing cognitive overhead. Clean slate energy!</p> -->
                 </div>
             </div>
         </div>
@@ -772,24 +956,24 @@
         <!-- Past Projects -->
         <div class="projects-category">
             <div class="category-title past reveal">
-                <h3>Greatest Hits</h3>
-                <span class="badge">3 Completed</span>
+                <h3>Past Projects</h3>
+                <!-- <span class="badge">3 Completed</span> -->
             </div>
             <div class="projects-grid">
                 <div class="project-card past reveal">
-                    <div class="icon">🎯</div>
+                    <!-- <div class="icon">🎯</div> -->
                     <p class="status">Completed 2024</p>
-                    <h4>Strategic Realignment</h4>
-                    <p>Helped a mid-size tech company refocus their product strategy around core user needs.</p>
+                    <h4>Complexity Redesign</h4>
+                    <p>Designed and executed technical protocols and documentation across multiple organizations to reduce the time to release Tier 1 SaaS service offerings from three months to 12 days.</p>
                 </div>
                 <div class="project-card past reveal">
-                    <div class="icon">🎵</div>
+                    <!-- <div class="icon">🎵</div> -->
                     <p class="status">Completed 2024</p>
                     <h4>Team Rhythm Design</h4>
                     <p>Created sustainable meeting and communication cadences for a distributed team of 50+.</p>
                 </div>
                 <div class="project-card past reveal">
-                    <div class="icon">🔍</div>
+                    <!-- <div class="icon">🔍</div> -->
                     <p class="status">Completed 2023</p>
                     <h4>Clarity Audit</h4>
                     <p>Conducted comprehensive workflow analysis and recommendations for a nonprofit organization.</p>
@@ -800,15 +984,59 @@
 
     <!-- Contact Section -->
     <section id="contact">
-        <div class="contact-content reveal">
-            <h2>Let's make something great</h2>
-            <p>Ready to get back to what matters? We'd love to hear from you.</p>
-            <a href="mailto:hello@ltatercollective.com" class="contact-email">
-                Say Hello
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+        <div class="contact-container">
+            <div class="contact-content reveal">
+                <p class="subtitle">✦ Get In Touch</p>
+                <h2>Let's make something great</h2>
+                <p>
+                    Ready to get back to what matters? Fill out the form and we'll get back to you within 24 hours.
+                </p>
+                <div class="contact-info">
+                    <p>Or email us directly at</p>
+                    <a href="mailto:hello@ltatercollective.com">hello@ltatercollective.com</a>
+                </div>
+            </div>
+            <div class="contact-form reveal" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="Jane">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Doe">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="jane@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="interest">What are you interested in?</label>
+                    <select id="interest">
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="workshop">Workshops</option>
+                        <option value="audit">Clarity Audit</option>
+                        <option value="other">Something Else</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell us more</label>
+                    <textarea id="message" placeholder="What's on your mind?"></textarea>
+                </div>
+                <button type="button" class="submit-button" onclick="submitForm()">
+                    Send Message
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="contact-form form-success" id="formSuccess">
+                <div class="icon">✓</div>
+                <h3>Message Sent!</h3>
+                <p>Thanks for reaching out. We'll be in touch soon.</p>
+            </div>
         </div>
     </section>
 
@@ -853,6 +1081,25 @@
                 targetSection.scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // Form submission
+        function submitForm() {
+            const form = document.getElementById('contactForm');
+            const success = document.getElementById('formSuccess');
+            
+            // Simple validation
+            const firstName = document.getElementById('firstName').value;
+            const email = document.getElementById('email').value;
+            
+            if (!firstName || !email) {
+                alert('Please fill in at least your name and email.');
+                return;
+            }
+            
+            // Hide form, show success
+            form.style.display = 'none';
+            success.classList.add('show');
+        }
     </script>
 </body>
 </html>
