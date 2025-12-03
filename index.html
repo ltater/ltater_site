@@ -992,33 +992,39 @@
                 <p>
                     Ready to get back to what matters? Fill out the form and we'll get back to you within 24 hours.
                 </p>
+                <div class="contact-info">
+                    <p>Or email us directly at</p>
+                    <a href="mailto:hello@ltatercollective.com">hello@ltatercollective.com</a>
+                </div>
             </div>
-            <div class="contact-form reveal" action="https://formspree.io/f/xldqnydz" method="POST">
+            <div class="contact-form reveal" id="contactForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+                        <input type="text" id="firstName" placeholder="Jane">
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" placeholder="Doe">
+                        <input type="text" id="lastName" placeholder="Doe">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+                    <input type="email" id="email" placeholder="jane@company.com">
                 </div>
                 <div class="form-group">
                     <label for="interest">What are you interested in?</label>
                     <select id="interest">
                         <option value="" disabled selected>Select an option</option>
-                        <option value="consulting">Website Design and Hosting</option>
-                        <option value="workshop">Product Management Services</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="workshop">Workshops</option>
+                        <option value="audit">Clarity Audit</option>
+                        <option value="other">Something Else</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="message">Tell us more</label>
-                    <textarea id="message" name="message" placeholder="What's on your mind?"></textarea>
+                    <textarea id="message" placeholder="What's on your mind?"></textarea>
                 </div>
                 <button type="button" class="submit-button" onclick="submitForm()">
                     Send Message
